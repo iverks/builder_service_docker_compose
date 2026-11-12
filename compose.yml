@@ -1,0 +1,17 @@
+services:
+  base:
+    image: application_builder
+    build:
+      dockerfile: base.Dockerfile
+  frontend:
+    image: frontend
+    build:
+      dockerfile: frontend.Dockerfile
+      additional_contexts:
+        application_builder: "service:base"
+  backend:
+    image: backend
+    build:
+      dockerfile: backend.Dockerfile
+      additional_contexts:
+        application_builder: "service:base"
