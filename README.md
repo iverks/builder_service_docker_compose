@@ -28,9 +28,13 @@ COPY --from=application_builder /app/* .
 
 Here the key in additional_contexts must correspond to the argument passed to `--from`, namely 'application_builder'.
 The value "service:base" refers to the service named "base" in the `compose.yml` file.
+This is what allows us to copy files from the other image's build
 
 
 ## Example of running it:
+
+Here we can see that the timestamps correspond in the different containers, which shows that the image was built once
+and reused in the different application containers successfully.
 
 ```
 $ docker compose up -d --build
