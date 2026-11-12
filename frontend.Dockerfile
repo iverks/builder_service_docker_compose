@@ -2,6 +2,7 @@ FROM debian:latest AS frontend
 
 WORKDIR /app
 
-COPY --from=application_builder /app/program.sh ./program.sh
+# Copy the timestamp file and the program from the builder
+COPY --from=application_builder /app/* .
 
 ENTRYPOINT ["tail", "-f", "/dev/null"]
